@@ -71,7 +71,7 @@ export class AppController {
             this.moveButtonsRandomly(gameArea);
 
             if (move < numButtons - 1) {
-                await this.wait(700);
+                await this.wait(2000);
             }
         }
 
