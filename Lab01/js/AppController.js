@@ -1,7 +1,6 @@
 import { UserInterface } from "./UserInterface.js";
 import { MemoryGame } from "./MemoryGame.js";
-import { BUTTON_TITLES } from "../lang/en/buttons.js";
-import { STRINGS } from "../lang/en/user.js";
+import { STRINGS } from "../lang/messages/en/user.js";
 
 export class AppController {
     constructor() {
@@ -14,7 +13,7 @@ export class AppController {
         const controls = this.ui.createInputField(
             STRINGS.NUM_BUTTONS,
             "input",
-            BUTTON_TITLES.BTN_GO
+            STRINGS.BTN_GO
         );
 
         const message = this.ui.createMessage();

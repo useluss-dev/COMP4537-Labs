@@ -1,4 +1,4 @@
-import { STRINGS } from "../lang/en/user.js";
+import { STRINGS } from "../lang/messages/en/user.js";
 
 export class UserInterface {
     constructor() {
