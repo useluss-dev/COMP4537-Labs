@@ -1,0 +1,16 @@
+.note {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.note textarea {
+    width: 300px;
+    min-height: 80px;
+    resize: vertical;
+}
+
+.note button {
+    flex-shrink: 0;
+}
