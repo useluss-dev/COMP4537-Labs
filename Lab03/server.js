@@ -2,6 +2,11 @@ import http from "http";
 import { MESSAGES } from "./lang/en/en.js";
 import { Utils } from "./modules/utils.js";
 import { FileHandler } from "./modules/fileHandler.js";
+import fs from "fs/promises";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 class Server {
     static INDEX = "/Lab03/";
