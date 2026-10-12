@@ -1,0 +1,117 @@
+<!-- AI used to generate this index page. -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Lab 3</title>
+        <style>
+            body {
+                font-family: system-ui, sans-serif;
+                max-width: 640px;
+                margin: 2rem auto;
+                padding: 0 1rem;
+                line-height: 1.5;
+            }
+            fieldset {
+                margin-bottom: 1.25rem;
+                padding: 1rem;
+            }
+            label {
+                display: block;
+                margin-bottom: 0.25rem;
+                font-weight: 600;
+            }
+            input[type="text"] {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0.4rem;
+                margin-bottom: 0.6rem;
+            }
+            button {
+                padding: 0.4rem 1rem;
+            }
+            code {
+                background: #f0f0f0;
+                padding: 0.1rem 0.3rem;
+                border-radius: 3px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Lab 3</h1>
+
+        <fieldset>
+            <legend>Server</legend>
+            <label for="base">Base URL</label>
+            <input type="text" id="base" value="http://localhost:8888/Lab03" />
+        </fieldset>
+
+        <fieldset>
+            <legend>Part B: Get greeting and server time</legend>
+            <form id="getDateForm">
+                <label for="name">Name</label>
+                <input type="text" id="name" value="John" />
+                <button type="submit">GET /getDate/?name=...</button>
+            </form>
+        </fieldset>
+
+        <fieldset>
+            <legend>Part C.1: Append text to file.txt</legend>
+            <form id="writeFileForm">
+                <label for="text">Text to append</label>
+                <input type="text" id="text" value="BCIT" />
+                <button type="submit">GET /writeFile/?text=...</button>
+            </form>
+        </fieldset>
+
+        <fieldset>
+            <legend>Part C.2: Read a file</legend>
+            <form id="readFileForm">
+                <label for="filename">File name</label>
+                <input type="text" id="filename" value="file.txt" />
+                <button type="submit">GET /readFile/&lt;file&gt;</button>
+            </form>
+        </fieldset>
+
+        <script>
+            const getBase = () =>
+                document
+                    .getElementById("base")
+                    .value.trim()
+                    .replace(/\/+$/, "");
+
+            const openUrl = (url) => window.open(url, "_blank");
+
+            document
+                .getElementById("getDateForm")
+                .addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const name = encodeURIComponent(
+                        document.getElementById("name").value
+                    );
+                    openUrl(`${getBase()}/getDate/?name=${name}`);
+                });
+
+            document
+                .getElementById("writeFileForm")
+                .addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const text = encodeURIComponent(
+                        document.getElementById("text").value
+                    );
+                    openUrl(`${getBase()}/writeFile/?text=${text}`);
+                });
+
+            document
+                .getElementById("readFileForm")
+                .addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const file = encodeURIComponent(
+                        document.getElementById("filename").value
+                    );
+                    openUrl(`${getBase()}/readFile/${file}`);
+                });
+        </script>
+    </body>
+</html>
