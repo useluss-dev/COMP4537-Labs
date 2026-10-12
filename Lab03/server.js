@@ -4,6 +4,7 @@ import { Utils } from "./modules/utils.js";
 import { FileHandler } from "./modules/fileHandler.js";
 
 class Server {
+    static INDEX = "/Lab03/";
     static GET_DATE = "/Lab03/getDate/";
     static WRITE_FILE = "/Lab03/writeFile/";
     static READ_FILE = "/Lab03/readFile/";
@@ -41,6 +42,8 @@ class Server {
                 await this.handleWriteFile(q, res);
             } else if (pathname.startsWith(Server.READ_FILE)) {
                 await this.handleReadFile(pathname, res);
+            } else if (this.matches(pathname, Server.INDEX)) {
+                await this.handleIndex(res);
             } else {
                 this.send(res, 404, MESSAGES.NOT_FOUND);
             }
@@ -48,6 +51,11 @@ class Server {
             console.error(err);
             this.send(res, 500, MESSAGES.SERVER_ERROR);
         }
+    }
+
+    async handleIndex(res) {
+        const html = await fs.readFile(path.join(__dirname, "index.html"));
+        this.send(res, 200, html, "text/html");
     }
 
     handleGetDate(q, res) {
